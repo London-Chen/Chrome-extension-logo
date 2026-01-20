@@ -44,12 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 构建提示词
 function buildPrompt(name, desc) {
-    // 只替换最明显会触发451错误的词
-    const safeDesc = desc
-        .replace(/block|blocker|ad|ads|advertisement/gi, 'content filter')
-        .replace(/kill|killer|destroy/gi, 'stop');
-
-    return `Professional app icon design for ${safeDesc}. Single large centered character/object, NO background patterns, NO borders, NO frames, NO decorative elements. Flat design, bold solid colors, clean solid single-color background. The main subject should occupy 70-90% of the canvas space. High contrast, minimalist, no text/numbers/letters. Isolated icon graphic only, full frame composition, no watermarks, no shadows, no gradients, no extra decorations.`;
+    return `Please help me design a browser extension icon with a green and white color scheme.`;
 }
 
 // 生成图标
