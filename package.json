@@ -10,8 +10,5 @@
   },
   "keywords": ["browser", "extension", "icon", "generator", "AI"],
   "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "jszip": "^3.10.1"
-  }
+  "license": "MIT"
 }
