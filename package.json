@@ -1,0 +1,17 @@
+{
+  "name": "extension-icon-generator",
+  "version": "1.0.0",
+  "description": "Browser Extension Icon Generator using AI",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve . -p 3000",
+    "build": "echo 'No build needed for vanilla JS'",
+    "deploy": "vercel"
+  },
+  "keywords": ["browser", "extension", "icon", "generator", "AI"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "jszip": "^3.10.1"
+  }
+}

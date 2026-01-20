@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI驱动的浏览器插件图标生成器，自动生成多尺寸图标">
+    <title>图标生成器 | AI Browser Extension Icon Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>图标生成器</h1>
+            <p class="subtitle">AI驱动的浏览器插件图标工具</p>
+        </header>
+
+        <main>
+            <!-- 输入区域 -->
+            <section class="input-section" aria-labelledby="input-heading">
+                <h2 id="input-heading" class="visually-hidden">创建图标</h2>
+
+                <form id="iconForm" novalidate>
+                    <div class="form-group">
+                        <label for="pluginName">插件名称</label>
+                        <input
+                            type="text"
+                            id="pluginName"
+                            name="pluginName"
+                            placeholder="例如：AdBlock, Dark Reader"
+                            autocomplete="off"
+                            required
+                            aria-required="true"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pluginDesc">功能描述</label>
+                        <textarea
+                            id="pluginDesc"
+                            name="pluginDesc"
+                            rows="3"
+                            placeholder="例如：security protection, theme switcher"
+                            required
+                            aria-required="true"
+                            maxlength="200"
+                        ></textarea>
+                        <span class="char-count" aria-live="polite"><span id="charCount">0</span>/200</span>
+                    </div>
+
+                    <button
+                        type="submit"
+                        id="generateBtn"
+                        class="btn btn-primary"
+                        aria-label="生成图标"
+                    >
+                        <span class="btn-text">生成图标</span>
+                        <span class="btn-loader" style="display: none;">生成中...</span>
+                    </button>
+                </form>
+
+                <div id="errorMsg" class="error-msg" role="alert" aria-live="assertive" style="display: none;"></div>
+
+                <div class="tip-box" role="note" aria-label="使用提示">
+                    <p><strong>💡 小贴士</strong></p>
+                    <ul>
+                        <li>使用英文描述效果更好（如："shield protection"）</li>
+                        <li>避免使用敏感词（如：block, kill, ad等）</li>
+                        <li>描述功能而非动作（如：用"security"代替"block ads"）</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 预览区域 -->
+            <section id="previewSection" class="preview-section" style="display: none;">
+                <h2>生成的图标预览</h2>
+
+                <div class="preview-grid">
+                    <!-- 原始图片 -->
+                    <div class="preview-card">
+                        <h3>原始图标 (1024x1024)</h3>
+                        <div class="image-container">
+                            <img id="originalImage" src="" alt="Original icon">
+                        </div>
+                    </div>
+
+                    <!-- 尺寸预览 -->
+                    <div class="preview-card">
+                        <h3>多尺寸预览</h3>
+                        <div class="sizes-preview">
+                            <div class="size-item">
+                                <span class="size-label">16x16</span>
+                                <canvas id="canvas16" width="16" height="16"></canvas>
+                            </div>
+                            <div class="size-item">
+                                <span class="size-label">48x48</span>
+                                <canvas id="canvas48" width="48" height="48"></canvas>
+                            </div>
+                            <div class="size-item">
+                                <span class="size-label">128x128</span>
+                                <canvas id="canvas128" width="128" height="128"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 操作按钮 -->
+                <div class="action-buttons">
+                    <button id="regenerateBtn" class="btn btn-secondary">
+                        🔄 重新生成
+                    </button>
+                    <button id="downloadBtn" class="btn btn-success">
+                        📦 下载ZIP文件
+                    </button>
+                </div>
+
+                <div class="file-list">
+                    <h4>下载文件列表：</h4>
+                    <ul>
+                        <li>icon-16.png (16x16像素)</li>
+                        <li>icon-48.png (48x48像素)</li>
+                        <li>icon-128.png (128x128像素)</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Powered by SiliconFlow AI | Made with ❤️ for developers</p>
+        </footer>
+    </div>
+
+    <!-- JSZip Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
